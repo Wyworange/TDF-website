@@ -1,5 +1,2 @@
 .DS_Store
-assets-library/
-*.mov
-*.pages
-*.pdf
+.vercel
