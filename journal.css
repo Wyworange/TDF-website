@@ -95,6 +95,9 @@ p { max-width: none; margin: 0 0 20px; }
 .single.wide { width: min(92%, 1600px); }
 .single.full { width: 100%; }
 .single.iteration { margin-top: 38px; margin-bottom: 28px; }
+.iteration-label { margin: 34px 0 12px; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: .04em; }
+.development-gallery { margin-top: 0; margin-bottom: 32px; }
+.development-gallery img { border: 1px solid #dedede; }
 .single.medium { width: min(82%, 1300px); }
 .single.narrow { width: min(68%, 1050px); }
 .caption { margin-top: -34px; margin-bottom: 48px; }
