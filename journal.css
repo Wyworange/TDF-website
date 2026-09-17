@@ -3,8 +3,10 @@
 html, body { margin: 0; min-height: 100%; }
 body { padding: 34px 38px 90px; font-size: 18px; line-height: 1.38; }
 a { color: inherit; text-decoration: none; }
-.masthead { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; align-items: baseline; padding-bottom: 9px; border-bottom: 1px solid #777; }
-.masthead h1 { margin: 0; font-size: clamp(2.15rem,3.35vw,4rem); line-height: 1; letter-spacing: -.035em; white-space: nowrap; }
+.masthead { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(0,1fr) auto; gap: clamp(18px,2vw,38px); align-items: baseline; padding-bottom: 9px; border-bottom: 1px solid #777; }
+.masthead h1 { min-width: 0; margin: 0; font-size: clamp(1.75rem,2.45vw,3.2rem); line-height: 1.05; letter-spacing: -.035em; }
+.masthead h1:first-child { white-space: normal; }
+.masthead h1:nth-child(2), .masthead h1:last-child { white-space: nowrap; }
 .masthead h1:nth-child(2) { text-align: center; }
 .masthead h1:last-child { text-align: right; }
 main { padding-top: 42px; }
