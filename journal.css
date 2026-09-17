@@ -24,6 +24,8 @@ p { max-width: none; margin: 0 0 20px; }
 .gallery img, .single img { width: 100%; height: auto; display: block; }
 .gallery figure { margin: 0; }
 .gallery figcaption { margin-top: 8px; font-family: Arial, Helvetica, sans-serif; font-size: .9rem; }
+.week-two-page .aha-gallery { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); width: min(78%, 1500px); }
+.week-two-page .aha-gallery figure { min-width: 0; }
 .single { margin: 25px auto 54px; }
 .single.wide { width: min(92%, 1600px); }
 .single.full { width: 100%; }
@@ -37,6 +39,7 @@ p { max-width: none; margin: 0 0 20px; }
   .masthead { grid-template-columns: 1fr; gap: 8px; }
   .masthead h1, .masthead h1:nth-child(2), .masthead h1:last-child { text-align: left; white-space: normal; font-size: 2.35rem; }
   .gallery.three, .gallery.two { grid-template-columns: 1fr; }
+  .week-two-page .aha-gallery { width: 100%; }
   .single.medium, .single.narrow, .single.wide { width: 100%; }
   .week-heading { align-items: flex-start; gap: 14px; }
 }
