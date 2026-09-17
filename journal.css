@@ -10,6 +10,9 @@ a { color: inherit; text-decoration: none; }
 .masthead h1:nth-child(2) { text-align: center; }
 .masthead h1:last-child { text-align: right; }
 main { padding-top: 42px; }
+.week-heading { display: flex; align-items: center; gap: 28px; margin: 0 0 42px; }
+.week-heading .week-title { margin: 0; }
+.week-heading img { width: min(180px, 22vw); height: auto; display: block; }
 .week-title { margin: 0 0 42px; font-size: 2rem; }
 .day { margin: 56px 0 28px; font-size: 1.55rem; font-weight: 400; }
 .section { margin: 34px 0 16px; font-size: 1.25rem; font-weight: 700; }
@@ -19,7 +22,11 @@ p { max-width: none; margin: 0 0 20px; }
 .gallery.three { grid-template-columns: repeat(3,minmax(0,1fr)); }
 .gallery.two { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .gallery img, .single img { width: 100%; height: auto; display: block; }
+.gallery figure { margin: 0; }
+.gallery figcaption { margin-top: 8px; font-family: Arial, Helvetica, sans-serif; font-size: .9rem; }
 .single { margin: 25px auto 54px; }
+.single.wide { width: min(92%, 1600px); }
+.single.full { width: 100%; }
 .single.medium { width: min(82%, 1300px); }
 .single.narrow { width: min(68%, 1050px); }
 .caption { margin-top: -34px; margin-bottom: 48px; }
@@ -29,5 +36,6 @@ p { max-width: none; margin: 0 0 20px; }
   .masthead { grid-template-columns: 1fr; gap: 8px; }
   .masthead h1, .masthead h1:nth-child(2), .masthead h1:last-child { text-align: left; white-space: normal; font-size: 2.35rem; }
   .gallery.three, .gallery.two { grid-template-columns: 1fr; }
-  .single.medium, .single.narrow { width: 100%; }
+  .single.medium, .single.narrow, .single.wide { width: 100%; }
+  .week-heading { align-items: flex-start; gap: 14px; }
 }
