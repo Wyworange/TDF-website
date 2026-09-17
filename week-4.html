@@ -34,6 +34,99 @@
 
       <p class="practice-note">I had already installed and configured agents in VS Code and connected the project to GitHub. During the in-class practice, I assisted my groupmates in completing these steps, and I cloned my letter-writing GitHub repository into VS Code (Fig. 1 and Fig. 2).</p>
 
+      <section class="documentation-section" aria-labelledby="readme-heading">
+        <div class="documentation-heading">
+          <div>
+            <h4 class="section" id="readme-heading">✦ Readme writted by codex</h4>
+            <p class="document-kicker">Letter Writer 2 · Epistola</p>
+          </div>
+          <a class="source-link" href="https://github.com/Wyworange/letter-writer-2/blob/main/README.md" target="_blank" rel="noreferrer">View README on GitHub ↗</a>
+        </div>
+
+        <article class="document-panel readme-panel">
+          <div class="document-intro">
+            <p class="eyebrow">PROJECT DOCUMENTATION</p>
+            <h5>An immersive historical letter-writing experience</h5>
+            <p>Users explore the relationships of historical figures, choose a recipient and writing context, and generate a period-style letter alongside a modern interpretation of communication, etiquette, and material culture.</p>
+          </div>
+
+          <div class="feature-grid">
+            <div><span>01</span><strong>Explore</strong><p>Historical personas, period writing scenes, and relationship networks.</p></div>
+            <div><span>02</span><strong>Compose</strong><p>Choose an event, tone, mood, research keywords, and recipient.</p></div>
+            <div><span>03</span><strong>Generate</strong><p>Create correspondence through Gemini or bundled fallback templates.</p></div>
+            <div><span>04</span><strong>Interpret</strong><p>Read a modern breakdown of materials, etiquette, speed, and sources.</p></div>
+          </div>
+
+          <div class="document-columns">
+            <div>
+              <p class="mini-heading">How the experience works</p>
+              <ol>
+                <li>Choose a historical persona and explore their environment or network.</li>
+                <li>Select a recipient, event, tone, mood, and keywords.</li>
+                <li>Review the generated letter and its modern analysis.</li>
+                <li>Copy the completed letter or continue refining the settings.</li>
+              </ol>
+            </div>
+            <div>
+              <p class="mini-heading">Technology</p>
+              <dl class="tech-list">
+                <div><dt>Interface</dt><dd>React 19 · TypeScript · Tailwind CSS 4</dd></div>
+                <div><dt>Build</dt><dd>Vite 6 · tsx · esbuild</dd></div>
+                <div><dt>Backend</dt><dd>Express 4 or Vercel Function</dd></div>
+                <div><dt>AI</dt><dd>Google GenAI SDK</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <p class="document-note"><strong>Current boundary:</strong> The experience uses static historical data and in-memory state. It does not currently include authentication, a database, saved-letter history, live archive retrieval, or vector search. Generated letters are creative historical interpretations rather than authenticated archival transcriptions.</p>
+        </article>
+      </section>
+
+      <section class="documentation-section" aria-labelledby="diagram-heading">
+        <div class="documentation-heading">
+          <div>
+            <h4 class="section" id="diagram-heading">✦ System diagram made by codex</h4>
+            <p class="document-kicker">Browser, backend, AI generation, and fallback behavior</p>
+          </div>
+          <a class="source-link" href="https://github.com/Wyworange/letter-writer-2/blob/main/SYSTEM_DIAGRAM.md" target="_blank" rel="noreferrer">View system diagram on GitHub ↗</a>
+        </div>
+
+        <article class="document-panel diagram-panel">
+          <img class="architecture-diagram" src="assets/source/W4/system-architecture.svg" alt="Letter Writer 2 system architecture showing browser, backend, Gemini, and template fallback paths">
+
+          <div class="sequence-strip" aria-label="Generation sequence">
+            <div><span>1</span><strong>Select</strong><small>Persona + recipient</small></div>
+            <i aria-hidden="true">→</i>
+            <div><span>2</span><strong>Preview</strong><small>Client template</small></div>
+            <i aria-hidden="true">→</i>
+            <div><span>3</span><strong>Request</strong><small>POST /api/generate-letter</small></div>
+            <i aria-hidden="true">→</i>
+            <div><span>4</span><strong>Generate</strong><small>Gemini or fallback</small></div>
+            <i aria-hidden="true">→</i>
+            <div><span>5</span><strong>Display</strong><small>Letter + analysis</small></div>
+          </div>
+
+          <div class="system-details">
+            <div>
+              <p class="mini-heading">Core data flow</p>
+              <ol>
+                <li>Static TypeScript data and user selections are stored in React state.</li>
+                <li>Persona selection creates an immediate local preview; setting changes use a 250 ms debounce.</li>
+                <li>The frontend sends the writer, recipient, event, tone, mood, and keywords to the generation endpoint.</li>
+                <li>The backend returns Gemini JSON when available, or follows its deployment-specific fallback path.</li>
+                <li>WritingDesk presents the letter, modern analysis, historical sources, and copy action.</li>
+              </ol>
+            </div>
+            <div>
+              <p class="mini-heading">Deployment paths</p>
+              <div class="path-card"><strong>Local / Node</strong><span>Express validates inputs, serves Vite, and can try ordered model candidates before using persona-specific templates.</span></div>
+              <div class="path-card"><strong>Vercel</strong><span>A serverless handler processes the same endpoint and falls back to a generic template or HTTP error.</span></div>
+              <div class="path-card"><strong>Browser fallback</strong><span>Network, non-2xx, or unreadable JSON responses trigger the client template generator.</span></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
       <a class="back" href="index.html">← Back to journal</a>
     </main>
   </body>
