@@ -27,6 +27,7 @@ p { max-width: none; margin: 0 0 20px; }
 .single { margin: 25px auto 54px; }
 .single.wide { width: min(92%, 1600px); }
 .single.full { width: 100%; }
+.single.iteration { margin-top: 38px; margin-bottom: 28px; }
 .single.medium { width: min(82%, 1300px); }
 .single.narrow { width: min(68%, 1050px); }
 .caption { margin-top: -34px; margin-bottom: 48px; }
