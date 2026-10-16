@@ -2,15 +2,125 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Week 6 — Design Technology foundation journal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 6 — Virtual Environments</title>
     <link rel="stylesheet" href="journal.css">
   </head>
-  <body>
-    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>Journal</h1><h1>Yuwen Wang</h1></header>
+  <body class="week-six-page">
+    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>Virtual Environments</h1><h1>Yuwen Wang</h1></header>
+
     <main>
       <h2 class="week-title">Week 6</h2>
-      <p>Content coming soon.</p>
+      <h3 class="day">Tuesday</h3>
+
+      <h4 class="section">✦ Virtual environments</h4>
+      <p>A virtual environment is a well-defined room for all your tools, like a sandbox.</p>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/virtual-environments.jpg" alt="Software virtual environment (Python, venv, libraries, model weights, APIs) compared with a simulated virtual environment (camera, agent, lighting, physics)">
+          <figcaption>Fig. 1 — Software vs simulated virtual environments.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li><strong>Software:</strong> some software comes with a requirements file (such as <code>requirements.txt</code>), so you need to install everything it lists.</li>
+        </ul>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/isolated-context.jpg" alt="A developer working inside an isolated software stack of Python, venv, libraries, PyTorch and OpenCV, model weights, and outputs, with its key benefits">
+          <figcaption>Fig. 2 — An isolated software context and its key benefits.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Worth a closer look: the outputs stage (predictions, visualizations, saved files).</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ From pose to animation</h4>
+      <p>AI animation: whatever you do, the animated character does exactly the same.</p>
+      <figure class="single narrow">
+        <img src="assets/source/W6/pose-to-rig.jpg" alt="Four steps: capture a camera image, estimate a skeletal pose, map keypoints to joint coordinates, and drive a rigged 3D character in Unity or Unreal">
+        <figcaption>Fig. 3 — Capture → estimate pose → map keypoints → drive rig. This works for motion as well as static poses.</figcaption>
+      </figure>
+
+      <h4 class="section">✦ Setting up Unity with the agent</h4>
+      <p>We also installed Unity in class, then asked the agent to inspect the Unity project and integrate the starter files into it.</p>
+      <figure class="single medium">
+        <img src="assets/source/W6/sample-prompt.jpg" alt="Starter guide step 3: a sample prompt asking the agent to inspect the Unity project and integrate the DigiPhantStarter elephant and motion tracking">
+        <figcaption>Fig. 4 — This sample prompt comes with the starter guide, and you can adapt it.</figcaption>
+      </figure>
+      <figure class="single wide">
+        <img src="assets/source/W6/unity-setup.jpg" alt="The DigiPhant elephant scene open in Unity 6.6, next to VS Code showing the same Unity project folder in the workspace">
+        <figcaption>Fig. 5 — The result: the DigiPhant elephant running in my Unity project (Unity 6.6). On the left, the same project folder sits in my VS Code workspace, so the agent can reach it.</figcaption>
+      </figure>
+
+      <h4 class="section">✦ MediaPipe experiments</h4>
+      <div class="gallery two">
+        <figure>
+          <img src="assets/source/W6/mp-face-detector-1.jpg" alt="Face Detector with minimum detection confidence 1: no face detected">
+          <figcaption>Fig. 6 — Face Detector at minimum confidence 1: nothing is detected.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/mp-face-detector-05.jpg" alt="Face Detector with minimum detection confidence 0.5: my face at 92% and a false face on the ceiling at 51%">
+          <figcaption>Fig. 7 — At 0.5, my face is found (92%), along with a false one on the ceiling (51%).</figcaption>
+        </figure>
+      </div>
+      <p>A threshold of 1 rejects everything, because a model is never 100% confident. Lowering it to 0.5 finds my face, but also lets in a false positive. Inference can run on either the CPU or the GPU.</p>
+
+      <div class="gallery two">
+        <figure>
+          <img src="assets/source/W6/mp-face-landmarker.jpg" alt="Face Landmarker drawing a dense mesh over my face">
+          <figcaption>Fig. 8 — Face Landmarker.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/mp-object-detector.jpg" alt="Object Detector (EfficientDet-Lite0) boxing me as a person at 91%">
+          <figcaption>Fig. 9 — Object Detector (EfficientDet-Lite0).</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/mp-hand-landmarker.jpg" alt="Hand Landmarker settings and webcam view">
+          <figcaption>Fig. 10 — Hand Landmarker (no hand in frame here). It doesn't predict anything, but the hand tracking was very good.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/mp-gesture-recognizer.jpg" alt="Gesture Recognizer tracking my raised hand and labeling it Left: Open_Palm at 56%">
+          <figcaption>Fig. 11 — Gesture Recognizer: “Left: Open_Palm”, 56%.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/mp-holistic-landmarker.jpg" alt="Holistic Landmarker tracking my face mesh, shoulders, and both hands crossed in front of me">
+          <figcaption>Fig. 12 — Holistic Landmarker with my hands crossed: it makes mistakes when I swap my left and right hands.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>What are the advantages and disadvantages of each model?</strong> One clue from my own runs: models that track more at once tend to be slower, but the architecture matters too. The two slowest were the general Object Detector and the Holistic Landmarker, which tracks face, body, and both hands at once.</p>
+      <table class="model-table">
+        <thead><tr><th>Model</th><th>Output</th><th>Inference time</th></tr></thead>
+        <tbody>
+          <tr><td>Face Detector</td><td>Face boxes</td><td>≈ 5 ms</td></tr>
+          <tr><td>Hand Landmarker</td><td>Hand keypoints</td><td>8.7 ms*</td></tr>
+          <tr><td>Face Landmarker</td><td>Full face mesh</td><td>12.0 ms</td></tr>
+          <tr><td>Gesture Recognizer</td><td>Hand keypoints + gesture label</td><td>17.6 ms</td></tr>
+          <tr><td>Object Detector</td><td>Labeled boxes for common object classes</td><td>53.7 ms</td></tr>
+          <tr><td>Holistic Landmarker</td><td>Face, body, and both hands together</td><td>56.6 ms</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">All runs used the GPU in the browser demo. Times are the “Inference time” readings in my screenshots (Face Detector averages two runs). *No hand was in frame.</p>
+
+      <h4 class="section">✦ Deploying MediaPipe</h4>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/github-google-ai-edge.jpg" alt="The google-ai-edge GitHub organization with the mediapipe, LiteRT, and mediapipe-samples repositories">
+          <figcaption>Fig. 13 — The google-ai-edge organization on GitHub: <a class="inline-link" href="https://github.com/google-ai-edge" target="_blank" rel="noreferrer">github.com/google-ai-edge ↗</a></figcaption>
+        </figure>
+        <ul class="notes">
+          <li>MediaPipe can be deployed alongside other applications on a Raspberry Pi and similar devices.</li>
+          <li>The source code and samples are in the google-ai-edge GitHub repositories.</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ Reflection</h4>
+      <ul class="notes">
+        <li>Once the Unity project files are in a folder the AI can access, the agent can help me work inside Unity too. I think the same approach could work just as well for other, similar practice.</li>
+        <li>I also realized how important it is to really keep the agent in a sandbox, the same idea as the virtual environments at the start of the session.</li>
+      </ul>
+
       <a class="back" href="index.html">← Back to journal</a>
     </main>
   </body>

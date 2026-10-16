@@ -168,20 +168,46 @@ strong { font-weight: 700; }
   .iteration-frame { padding: 14px 12px 16px; margin: 28px 0; }
 }
 
-/* Week 5: figures with side notes, Teachable Machine pairs. */
-.week-five-page .figure-notes { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: center; margin: 24px 0 48px; }
-.week-five-page figure { margin: 0; min-width: 0; }
-.week-five-page figure img { width: 100%; height: auto; display: block; }
-.week-five-page figcaption { margin-top: 8px; font-size: 20px; }
-.week-five-page .notes { margin: 0 0 28px; padding-left: 24px; }
-.week-five-page .notes li { margin-bottom: 10px; }
-.week-five-page .figure-notes .notes { margin: 0; }
+/* Week 5–6: figures with side notes; Week 5 Teachable Machine pairs. */
+:is(.week-five-page, .week-six-page) .figure-notes { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: center; margin: 24px 0 48px; }
+:is(.week-five-page, .week-six-page) figure { margin: 0; min-width: 0; }
+:is(.week-five-page, .week-six-page) figure img { width: 100%; height: auto; display: block; }
+:is(.week-five-page, .week-six-page) figcaption { margin-top: 8px; font-size: 20px; }
+:is(.week-five-page, .week-six-page) .notes { margin: 0 0 28px; padding-left: 24px; }
+:is(.week-five-page, .week-six-page) .notes li { margin-bottom: 10px; }
+:is(.week-five-page, .week-six-page) .figure-notes .notes { margin: 0; }
 .week-five-page .tm-pair { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); align-items: end; gap: clamp(24px, 3vw, 56px); }
 .week-five-page .tm-settings { max-width: 360px; }
-.week-five-page .inline-link { text-decoration: underline; overflow-wrap: anywhere; }
+:is(.week-five-page, .week-six-page) .inline-link { text-decoration: underline; overflow-wrap: anywhere; }
 @media (max-width: 760px) {
-  .week-five-page .figure-notes, .week-five-page .tm-pair { grid-template-columns: 1fr; }
+  :is(.week-five-page, .week-six-page) .figure-notes, .week-five-page .tm-pair { grid-template-columns: 1fr; }
 }
 @media (max-width: 1280px) {
   .week-five-page .masthead h1:nth-child(2) { white-space: normal; }
+}
+
+/* Week 6: model comparison table. */
+@media (max-width: 1280px) {
+  .week-six-page .masthead h1:nth-child(2) { white-space: normal; }
+}
+.week-six-page .model-table { width: 100%; max-width: 1000px; border-collapse: collapse; margin: 8px 0 12px; }
+.week-six-page .model-table th, .week-six-page .model-table td { text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid #d0d0d0; vertical-align: top; }
+.week-six-page .model-table th { border-bottom-color: #777; }
+.week-six-page .model-table td:last-child, .week-six-page .model-table th:last-child { text-align: right; white-space: nowrap; padding-right: 0; }
+.week-six-page .table-note { color: #666; }
+.week-six-page figure.single { margin: 24px auto 48px; }
+
+/* Week 5: homework classifier cards. */
+.week-five-page .homework-section { margin-top: 34px; }
+.week-five-page .classifier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); margin: 28px 0 0; }
+.week-five-page .classifier-card { min-width: 0; border-top: 1px solid #bbb; padding-top: 20px; }
+.week-five-page .classifier-card .mini-heading { margin-bottom: 8px; }
+.week-five-page .sample-row { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 12px; align-items: center; margin-bottom: 10px; }
+.week-five-page .sample-row span { color: #666; }
+.week-five-page .thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.week-five-page .thumbs img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.week-five-page .classifier-card .inline-link { display: inline-block; margin-top: 10px; }
+@media (max-width: 760px) {
+  .week-five-page .classifier-grid { grid-template-columns: 1fr; }
+  .week-five-page .sample-row { grid-template-columns: 1fr; gap: 6px; }
 }
