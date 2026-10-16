@@ -2,15 +2,114 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Week 5 — Design Technology foundation journal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 5 — Computer Vision</title>
     <link rel="stylesheet" href="journal.css">
   </head>
-  <body>
-    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>Journal</h1><h1>Yuwen Wang</h1></header>
+  <body class="week-five-page">
+    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>Computer Vision</h1><h1>Yuwen Wang</h1></header>
+
     <main>
       <h2 class="week-title">Week 5</h2>
-      <p>Content coming soon.</p>
+      <h3 class="day">Tuesday</h3>
+
+      <h4 class="section">✦ How image models see</h4>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W5/cnn.jpg" alt="Six steps of a convolutional neural network, from local perception to a task-specific head, with features learned at each layer">
+          <figcaption>Fig. 1 — Convolutional Neural Networks (CNNs).</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Meta's Segment Anything tool can segment everything in an image, but it needs cloud GPUs to run.</li>
+        </ul>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W5/image-models.jpg" alt="Backbone families (CNNs, ViT, hierarchical, generative) feeding a shared encoder into classification, detection, segmentation, pose, and tracking heads">
+          <figcaption>Fig. 2 — Image models: architectures vs tasks.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Combining two cameras (stereo vision) adds depth, turning a flat image into three-dimensional information.</li>
+          <li>Pose estimation also works on non-human subjects, such as animals.</li>
+          <li>3D Gaussian Splatting reconstructs a 3D scene from a set of 2D images.</li>
+          <li>The iPhone's three-camera system is good enough for 3D scanning, for example with Scaniverse.</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ From pixels to detections</h4>
+      <p>A detector usually starts from a pre-trained backbone, which turns pixels into feature channels. Once the features exist, the detector scans the whole feature map and gives every candidate an object confidence score.</p>
+      <div class="gallery two">
+        <figure>
+          <img src="assets/source/W5/detection-big-picture.jpg" alt="Object detection pipeline: input image, backbone feature maps, detection head, candidate boxes, filtering and NMS, final detections">
+          <figcaption>Fig. 3 — Object detection: the big picture.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W5/detection-scoring.jpg" alt="Final confidence equals objectness score times class score, for example 0.95 × 0.90 = 0.86">
+          <figcaption>Fig. 4 — Object detection: scoring each candidate.</figcaption>
+        </figure>
+      </div>
+      <p><strong>IoU (Intersection over Union):</strong> when two boxes have a high IoU, they probably mark the same object.</p>
+
+      <h4 class="section">✦ Preparing training data</h4>
+      <ul class="notes">
+        <li>Keep the data evenly distributed across classes.</li>
+        <li>A 10-second video means roughly 300 frames to label (at 30 fps).</li>
+        <li>Similar existing data can be reused by changing its labels.</li>
+        <li><strong>Synthetic data:</strong> a fake elephant made in Unity can be labeled and used as a dataset, and it works surprisingly well. Labeling is even easier in Unity because it can be automated: the 3D model already has its joints defined.</li>
+      </ul>
+
+      <h4 class="section">✦ Reflection</h4>
+      <ul class="notes">
+        <li>Some of the glossary terms still feel obscure to me.</li>
+        <li>I want to build the agent around my own workflow.</li>
+        <li>I keep asking how changing the instructions could give me a better agent.</li>
+      </ul>
+
+      <h3 class="day">Thursday</h3>
+
+      <h4 class="section">✦ Teachable Machine</h4>
+      <div class="gallery tm-pair">
+        <figure>
+          <img src="assets/source/W5/tm-new-project.png" alt="Teachable Machine New Image Project dialog comparing the standard and embedded image models">
+          <figcaption>Fig. 5 — The embedded image model is built for microcontrollers (very small computers).</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W5/tm-export.png" alt="Teachable Machine export panel with TensorFlow.js, TensorFlow, and TensorFlow Lite tabs">
+          <figcaption>Fig. 6 — Export options: TensorFlow.js, TensorFlow, and TensorFlow Lite for small devices.</figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery tm-pair">
+        <figure>
+          <img src="assets/source/W5/tm-training-data.png" alt="Teachable Machine training two classes, “king of banana” and “iphone”, with a live webcam preview">
+          <figcaption>Fig. 7 — Training data for two classes, with the live preview.</figcaption>
+        </figure>
+        <figure class="tm-settings">
+          <img src="assets/source/W5/tm-training-settings.png" alt="Training settings: 50 epochs, batch size 16, learning rate 0.001">
+          <figcaption>Fig. 8 — Training settings.</figcaption>
+        </figure>
+      </div>
+      <ul class="notes">
+        <li>Settings used: Epochs 50 · Batch size 16 · Learning rate 0.001.</li>
+        <li>When the two lines in the training graph converge, training can stop.</li>
+        <li>FFmpeg can split a video into frames for training data.</li>
+      </ul>
+
+      <h4 class="section">✦ Homework</h4>
+      <ul class="notes">
+        <li>Image project</li>
+        <li>Pose project</li>
+      </ul>
+      <p>My model (submitted with the assignment): <a class="inline-link" href="https://teachablemachine.withgoogle.com/models/S6lPsPrWw/" target="_blank" rel="noreferrer">teachablemachine.withgoogle.com/models/S6lPsPrWw ↗</a></p>
+
+      <h4 class="section">✦ Reflection</h4>
+      <ul class="notes">
+        <li>I need to summarize my observations, including the limits of the samples (camera, dataset, background) and their diversity. Is there a model that can help with this analysis?</li>
+        <li>A small brainstorm before each project feels necessary.</li>
+        <li><strong>Data key:</strong> references and templates.</li>
+      </ul>
+
       <a class="back" href="index.html">← Back to journal</a>
     </main>
   </body>
