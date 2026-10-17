@@ -169,18 +169,18 @@ strong { font-weight: 700; }
 }
 
 /* Week 5–6: figures with side notes; Week 5 Teachable Machine pairs. */
-:is(.week-five-page, .week-six-page) .figure-notes { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: center; margin: 24px 0 48px; }
-:is(.week-five-page, .week-six-page) figure { margin: 0; min-width: 0; }
-:is(.week-five-page, .week-six-page) figure img { width: 100%; height: auto; display: block; }
-:is(.week-five-page, .week-six-page) figcaption { margin-top: 8px; font-size: 20px; }
-:is(.week-five-page, .week-six-page) .notes { margin: 0 0 28px; padding-left: 24px; }
-:is(.week-five-page, .week-six-page) .notes li { margin-bottom: 10px; }
-:is(.week-five-page, .week-six-page) .figure-notes .notes { margin: 0; }
+:is(.week-five-page, .week-six-page, .week-seven-page) .figure-notes { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 56px); align-items: center; margin: 24px 0 48px; }
+:is(.week-five-page, .week-six-page, .week-seven-page) figure { margin: 0; min-width: 0; }
+:is(.week-five-page, .week-six-page, .week-seven-page) figure img { width: 100%; height: auto; display: block; }
+:is(.week-five-page, .week-six-page, .week-seven-page) figcaption { margin-top: 8px; font-size: 20px; }
+:is(.week-five-page, .week-six-page, .week-seven-page) .notes { margin: 0 0 28px; padding-left: 24px; }
+:is(.week-five-page, .week-six-page, .week-seven-page) .notes li { margin-bottom: 10px; }
+:is(.week-five-page, .week-six-page, .week-seven-page) .figure-notes .notes { margin: 0; }
 .week-five-page .tm-pair { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); align-items: end; gap: clamp(24px, 3vw, 56px); }
 .week-five-page .tm-settings { max-width: 360px; }
-:is(.week-five-page, .week-six-page) .inline-link { text-decoration: underline; overflow-wrap: anywhere; }
+:is(.week-five-page, .week-six-page, .week-seven-page) .inline-link { text-decoration: underline; overflow-wrap: anywhere; }
 @media (max-width: 760px) {
-  :is(.week-five-page, .week-six-page) .figure-notes, .week-five-page .tm-pair { grid-template-columns: 1fr; }
+  :is(.week-five-page, .week-six-page, .week-seven-page) .figure-notes, .week-five-page .tm-pair { grid-template-columns: 1fr; }
 }
 @media (max-width: 1280px) {
   .week-five-page .masthead h1:nth-child(2) { white-space: normal; }
@@ -188,14 +188,14 @@ strong { font-weight: 700; }
 
 /* Week 6: model comparison table. */
 @media (max-width: 1280px) {
-  .week-six-page .masthead h1:nth-child(2) { white-space: normal; }
+  :is(.week-six-page, .week-seven-page) .masthead h1:nth-child(2) { white-space: normal; }
 }
-.week-six-page .model-table { width: 100%; max-width: 1000px; border-collapse: collapse; margin: 8px 0 12px; }
-.week-six-page .model-table th, .week-six-page .model-table td { text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid #d0d0d0; vertical-align: top; }
-.week-six-page .model-table th { border-bottom-color: #777; }
-.week-six-page .model-table td:last-child, .week-six-page .model-table th:last-child { text-align: right; white-space: nowrap; padding-right: 0; }
-.week-six-page .table-note { color: #666; }
-.week-six-page figure.single { margin: 24px auto 48px; }
+:is(.week-six-page, .week-seven-page) .model-table { width: 100%; max-width: 1000px; border-collapse: collapse; margin: 8px 0 12px; }
+:is(.week-six-page, .week-seven-page) .model-table th, :is(.week-six-page, .week-seven-page) .model-table td { text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid #d0d0d0; vertical-align: top; }
+:is(.week-six-page, .week-seven-page) .model-table th { border-bottom-color: #777; }
+:is(.week-six-page, .week-seven-page) .model-table td:last-child, :is(.week-six-page, .week-seven-page) .model-table th:last-child { text-align: right; white-space: nowrap; padding-right: 0; }
+:is(.week-six-page, .week-seven-page) .table-note { color: #666; }
+:is(.week-six-page, .week-seven-page) figure.single { margin: 24px auto 48px; }
 
 /* Week 5: homework classifier cards. */
 .week-five-page .homework-section { margin-top: 34px; }
@@ -211,3 +211,5 @@ strong { font-weight: 700; }
   .week-five-page .classifier-grid { grid-template-columns: 1fr; }
   .week-five-page .sample-row { grid-template-columns: 1fr; gap: 6px; }
 }
+:is(.week-six-page, .week-seven-page) .mapping-table td:last-child, :is(.week-six-page, .week-seven-page) .mapping-table th:last-child { text-align: left; white-space: normal; }
+:is(.week-six-page, .week-seven-page) .mapping-table td:first-child { width: 42%; }

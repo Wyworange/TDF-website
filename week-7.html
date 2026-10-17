@@ -2,15 +2,209 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Week 7 — Design Technology foundation journal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 7 — DigiPhant</title>
     <link rel="stylesheet" href="journal.css">
   </head>
-  <body>
-    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>Journal</h1><h1>Yuwen Wang</h1></header>
+  <body class="week-seven-page">
+    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>DigiPhant</h1><h1>Yuwen Wang</h1></header>
+
     <main>
       <h2 class="week-title">Week 7</h2>
-      <p>Content coming soon.</p>
+      <h3 class="day">Tuesday &amp; Thursday</h3>
+
+      <h4 class="section">✦ My own interaction: eating fruit</h4>
+      <p>This week we started on our individual interactions. I want to make the elephant eat fruit. At first I planned to use object recognition, but there was no printer nearby at the time, so I started with mouth-opening and left/right-eye wink logic instead.</p>
+
+      <p>I planned the interaction with Codex in three steps.</p>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-codex-1-explore.jpg" alt="Codex running an Explorer on my Unity project, then waiting for approval before injecting anything">
+          <figcaption>Fig. 1 — Step 1: Codex explores the project first.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Before changing anything, Codex used an Explorer to find my saved scene and custom controls, then waited for my approval, as my workspace instructions require.</li>
+          <li>It found that the elephant moves through an “Elephant Travel” parent at a fixed height, within a 15-unit travel radius.</li>
+        </ul>
+      </div>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-codex-2-plan.jpg" alt="My first plan in Codex: open mouth to rear up, and apple or banana cards to pick fruit">
+          <figcaption>Fig. 2 — Step 2: my first plan.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li><strong>Rear up:</strong> when my mouth opens, the elephant raises its front legs and balances on its hind feet.</li>
+          <li><strong>Pick fruit:</strong> when an apple or banana card is detected, it reaches its trunk toward the matching fruit.</li>
+          <li>The rig already has the bones needed, but there is no ready-made rear-up animation.</li>
+        </ul>
+      </div>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-codex-3-wink.jpg" alt="The revised plan in Codex: mouth opening and left or right winks replace the cards, with no pre-training needed">
+          <figcaption>Fig. 3 — Step 3: the revised plan (Codex's reply translated from Chinese).</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>No extra tree: the apple and banana go on an existing tree mid-way along the course.</li>
+          <li>Winks replace the cards: right eye picks the apple, left eye picks the banana, and blinking with both eyes is ignored.</li>
+          <li>No pre-training is needed. The pre-trained MediaPipe Face Landmarker detects the mouth and eyes; only the trigger thresholds need calibrating on site.</li>
+        </ul>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-feeding-bush.jpg" alt="Top-down view of the savannah course with a red circle drawn around a small bush beside the inner bend of the path">
+          <figcaption>Fig. 4 — Choosing the spot for the feeding bush, circled in red on the top-down view.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Next, I chose where to place the feeding bush.</li>
+          <li>To describe the position more precisely, I drew a circle on the top-down view and showed it to Codex, instead of explaining it in words.</li>
+        </ul>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-fruit-debug.jpg" alt="DigiPhant in Unity with a new FRUIT debug panel at the top right: rear onto hind feet, pick apple, pick banana, lower, reset, move to feeding bush, and start face camera">
+          <figcaption>Fig. 5 — The new fruit controls in Unity, with the feeding bush in the background.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>A new <strong>FRUIT</strong> panel sets the rule: right wink = apple, left wink = banana, both eyes ignored.</li>
+          <li>Debug buttons let me test each step without the camera: rear onto hind feet, pick apple or banana, lower, reset the fruit, and move to the feeding bush.</li>
+          <li><strong>Start face camera (one person)</strong> switches to the real face input.</li>
+        </ul>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-mouth-rear-up.jpg" alt="DigiPhant in Unity: in the camera preview my mouth is open, and the elephant rises onto its hind feet; the FRUIT panel reads Rising onto hind feet, movement paused">
+          <figcaption>Fig. 6 — Testing the logic: opening my mouth makes the elephant stand up.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>This checks the mouth-open logic with the real face camera.</li>
+          <li>When I open my mouth, the elephant rises onto its hind feet, and the panel shows “Rising onto hind feet; movement paused”.</li>
+        </ul>
+      </div>
+
+      <div class="gallery three">
+        <figure>
+          <img src="assets/source/W6/thu-reach-1.jpg" alt="With my mouth open, the elephant rears up too close to the feeding bush, and the apple and banana end up against its head">
+          <figcaption>Fig. 7 — Too close: the fruit ends up against its head.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/thu-reach-2.jpg" alt="The elephant rears up beside the feeding bush, but its trunk reaches past the hanging fruit">
+          <figcaption>Fig. 8 — Standing beside the bush, the trunk reaches past the fruit.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/thu-reach-3.jpg" alt="A moment later the elephant is still standing, and its trunk still misses the fruit">
+          <figcaption>Fig. 9 — Still out of reach.</figcaption>
+        </figure>
+      </div>
+      <p>Testing the full sequence showed that the elephant has to stand in a fairly precise spot to reach the fruit. That is hard to judge accurately when controlling it for real.</p>
+
+      <p>So I added a portal, which lines the elephant up precisely.</p>
+      <div class="gallery two">
+        <figure>
+          <img src="assets/source/W6/thu-portal-1.jpg" alt="The elephant walks along the path toward a glowing blue portal on the ground near the feeding bush">
+          <figcaption>Fig. 10 — The elephant walks onto the blue portal.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/thu-portal-2.jpg" alt="After the portal, the elephant faces the fruit at the feeding bush; the panel reads Portal: Facing the fruit at the feeding bush; rear, then select fruit">
+          <figcaption>Fig. 11 — The portal turns it to face the fruit: “rear, then select fruit”.</figcaption>
+        </figure>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-wink-test.jpg" alt="A Wink test window: I close one eye, and the readout at the bottom shows mouth 0.00, L 0.70, R 0.37, actions 1">
+          <figcaption>Fig. 12 — The wink test, with the eye range tuned to my own eyes (background blurred).</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Claude customized the eye range to fit my own eyes. The readout shows the live mouth value and each eye's closure (L and R).</li>
+          <li>But I didn't feel safe doing it this way, because I felt I wasn't the one in control.</li>
+          <li>Still, it taught me the principle behind it. So when my teammate Chunzi ran into a similar problem, I had her do the adjusting in MediaPipe herself, then export the trained data to Codex.</li>
+        </ul>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-fruit-picked.jpg" alt="After tuning: the elephant stands on its hind feet at the feeding bush with the banana in its trunk; the panel reads Fruit attached: lifting">
+          <figcaption>Fig. 13 — The result after tuning: the elephant stands up and lifts the banana with its trunk.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>The panel reads “Fruit attached: lifting”.</li>
+          <li>The tuned rule counts a wink when one eye's closure is at least 0.60 and the other's is at most 0.55.</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ Integration test</h4>
+      <p>Aurora and I finished our two basic interactions first: eating fruit (mine) and picking up the log (hers). Then we tested integrating them on my computer. Even with only two people, the recognition was clearly unstable.</p>
+      <div class="gallery two">
+        <figure>
+          <img src="assets/source/W6/thu-integrate-1.jpg" alt="Two-person integration test in Unity: Aurora and I in the camera preview as P1 and P2, with roles set to Yuwen face, Aurora hands, Chunzi upper body; Performer 1 shows waiting or lost">
+          <figcaption>Fig. 14 — Roles assigned: my face, Aurora's hands. Even so, Performer 1 drops to “waiting / lost”.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/thu-integrate-2.jpg" alt="The same integration test a few minutes later: both performers visible, but the elephant is still idle">
+          <figcaption>Fig. 15 — Both performers visible again a few minutes later.</figcaption>
+        </figure>
+      </div>
+
+      <p>So we tried sitting apart first, keeping our bodies from overlapping as much as possible.</p>
+      <figure class="single medium">
+        <img src="assets/source/W6/thu-integrate-apart.jpg" alt="Aurora and I sitting side by side with our hands raised, each tracked separately as P1 and P2 in the camera preview">
+        <figcaption>Fig. 16 — Sitting apart so each of us is tracked as a separate performer (P1 and P2).</figcaption>
+      </figure>
+
+      <p>This time, all three of us combined. Three people turned out to be even more unstable, even though we weren't overlapping.</p>
+      <div class="gallery three">
+        <figure>
+          <img src="assets/source/W6/thu-three-1.jpg" alt="Three of us sitting apart at a table; only two are tracked, and Performer 2 shows waiting or lost">
+          <figcaption>Fig. 17 — Two of three tracked; Performer 2 is “waiting / lost”.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/thu-three-2.jpg" alt="A moment later only one of the three is tracked; Performers 2 and 3 are waiting or lost">
+          <figcaption>Fig. 18 — Moments later, only one is tracked.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W6/thu-three-3.jpg" alt="Tracking jumps again: a different pair of us is tracked, and the person with raised hands is lost">
+          <figcaption>Fig. 19 — Tracking jumps to a different pair.</figcaption>
+        </figure>
+      </div>
+
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-split-screen.jpg" alt="The camera preview split into three vertical zones, one per person; all three performers are tracked and visible with their roles: Aurora hands, Yuwen face, Chunzi upper body">
+          <figcaption>Fig. 20 — With the screen split into three zones, all three of us are tracked at once.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Claude suggested splitting the screen, giving each person their own zone in the camera view.</li>
+          <li>Sure enough, it became much more stable: all three performers show as visible, with Aurora on hands, me on face, and Chunzi on upper body.</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ A final interaction with the log</h4>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-sit-on-log.jpg" alt="At the end of the course, the elephant sits on the log it carried, with three performers tracked in split-screen zones; the panel reads Seated on the log">
+          <figcaption>Fig. 21 — At the finish, the elephant sits on the log to rest.</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>Aurora's hand gestures can both grab and release the log, but our earlier interactions mainly showed grabbing.</li>
+          <li>So we planned for the elephant to put the log down when it reaches the finish, then have one last interaction with it: tired from walking, it sits on the log to rest.</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ Changing the scene</h4>
+      <div class="figure-notes">
+        <figure>
+          <img src="assets/source/W6/thu-scene-change.jpg" alt="Claude Code next to the Unity editor: the new scene has a darker sky, glowing blue trees, and a rainbow path around the elephant">
+          <figcaption>Fig. 22 — Then we changed the scene with Claude Code (prompts translated from Chinese).</figcaption>
+        </figure>
+        <ul class="notes">
+          <li>We asked Claude Code to make the sky darker and let the trees glow.</li>
+          <li>We also asked it to check whether the blue portal was covered by the path, and to move it up.</li>
+        </ul>
+      </div>
+
       <a class="back" href="index.html">← Back to journal</a>
     </main>
   </body>

@@ -144,6 +144,34 @@
         </figure>
       </div>
 
+      <h4 class="section">✦ Three-person test</h4>
+      <p>Next, we tested it with three people. Tracking three people at once was very unstable.</p>
+      <figure class="single narrow">
+        <img src="assets/source/W6/thu-three-person-test.jpg" alt="Three of us standing and sitting in front of a laptop, holding our arms in poses to control the elephant together">
+        <figcaption>Fig. 18 — Testing the elephant with three performers at once.</figcaption>
+      </figure>
+
+      <h4 class="section">✦ Bones vs animations</h4>
+      <p>Then I asked ChatGPT to explain how the elephant's bones are bound in Unity and how its animation logic works.</p>
+      <figure class="single medium">
+        <img src="assets/source/W6/thu-elephant-rig.jpg" alt="Elephant rig diagram: the tail, femurs, humeri, ears, head, and trunk joints are directly driven by MediaPipe; the other bones follow their parent or the walking animation">
+        <figcaption>Fig. 19 — The elephant rig. Orange joints are driven directly by MediaPipe; gray-blue joints follow their parent or the walking animation.</figcaption>
+      </figure>
+      <table class="model-table mapping-table">
+        <thead><tr><th>Your movement</th><th>Elephant response</th></tr></thead>
+        <tbody>
+          <tr><td>Raise left hand above neutral</td><td>Moves forward; raise it farther to run</td></tr>
+          <tr><td>Lower left hand below neutral</td><td>Moves backward</td></tr>
+          <tr><td>Raise or lower left hand</td><td>Also moves both left legs</td></tr>
+          <tr><td>Raise or lower right hand</td><td>Moves both right legs and curls or uncurls the trunk</td></tr>
+          <tr><td>Tilt shoulders sideways</td><td>Steers, turns the head, and sways the tail together</td></tr>
+          <tr><td>Spread hands apart</td><td>Moves both ears</td></tr>
+          <tr><td>Return to neutral pose</td><td>Stops travel and returns gestures toward neutral</td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">The default movement mappings.</p>
+      <p><strong>Our decision:</strong> rather than controlling individual bones, mapping each interaction directly to an animation would be more convenient.</p>
+
       <a class="back" href="index.html">← Back to journal</a>
     </main>
   </body>
