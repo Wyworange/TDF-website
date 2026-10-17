@@ -135,45 +135,93 @@
         </ul>
       </div>
 
+      <figure class="system-diagram">
+        <div class="diagram-scroll">
+          <svg viewBox="0 0 1200 580" role="img" aria-labelledby="a1-t">
+          <title id="a1-t">Fruit interaction flow: webcam to Face Landmarker to calibrated face signals; trigger rules for mouth and winks; elephant states from walking, portal, rearing, picking, to lowering; with a safe fallback when the face is lost</title>
+          <style>.t1{font:700 19px "Instrument Sans",Arial,sans-serif;fill:#242424}.t2{font:400 16px "Instrument Sans",Arial,sans-serif;fill:#555}.lane{font:700 13px "Instrument Sans",Arial,sans-serif;letter-spacing:.12em;fill:#888}</style>
+          <defs>
+            <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#242424"/></marker>
+            <marker id="a1-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b4472f"/></marker>
+          </defs>
+            <text x="20" y="28" class="lane">1 · FACE SIGNALS</text>
+            <rect x="20" y="44" width="220" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="130.0" y="80.0" text-anchor="middle" class="t1">Webcam</text><text x="130.0" y="104.0" text-anchor="middle" class="t2">one performer, face visible</text>
+            <rect x="280" y="44" width="290" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="425.0" y="80.0" text-anchor="middle" class="t1">Face Landmarker</text><text x="425.0" y="104.0" text-anchor="middle" class="t2">MediaPipe, no training needed</text>
+            <rect x="600" y="44" width="250" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="725.0" y="80.0" text-anchor="middle" class="t1">Face signals</text><text x="725.0" y="104.0" text-anchor="middle" class="t2">mouth · left eye · right eye</text>
+            <rect x="900" y="44" width="280" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="1040.0" y="80.0" text-anchor="middle" class="t1">Calibrate neutral face</text><text x="1040.0" y="104.0" text-anchor="middle" class="t2">2 s; values = change vs neutral</text>
+            <line x1="240" y1="86" x2="280" y2="86" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="570" y1="86" x2="600" y2="86" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="850" y1="86" x2="900" y2="86" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <text x="20" y="176" class="lane">2 · TRIGGER RULES</text>
+            <path d="M1040,128 V150 H200 V192" fill="none" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="600" y1="150" x2="600" y2="192" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="1000" y1="150" x2="1000" y2="192" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <rect x="20" y="192" width="360" height="84" rx="10" fill="#f7f7f5" stroke="#242424" stroke-width="1.5"/><text x="200.0" y="228.0" text-anchor="middle" class="t1">Mouth open</text><text x="200.0" y="252.0" text-anchor="middle" class="t2">→ rear up</text>
+            <rect x="420" y="192" width="360" height="84" rx="10" fill="#f7f7f5" stroke="#242424" stroke-width="1.5"/><text x="600.0" y="228.0" text-anchor="middle" class="t1">One eye ≥ 0.60, other ≤ 0.55</text><text x="600.0" y="252.0" text-anchor="middle" class="t2">wink: right = apple · left = banana</text>
+            <rect x="820" y="192" width="360" height="84" rx="10" fill="#f7f7f5" stroke="#242424" stroke-width="1.5"/><text x="1000.0" y="228.0" text-anchor="middle" class="t1">Both eyes closed</text><text x="1000.0" y="252.0" text-anchor="middle" class="t2">normal blink → ignored</text>
+            <text x="20" y="326" class="lane">3 · ELEPHANT STATES</text>
+            <rect x="20" y="342" width="210" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="125.0" y="378.0" text-anchor="middle" class="t1">Walk the course</text><text x="125.0" y="402.0" text-anchor="middle" class="t2">pose drives travel</text>
+            <rect x="250" y="342" width="210" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="355.0" y="378.0" text-anchor="middle" class="t1">Portal</text><text x="355.0" y="402.0" text-anchor="middle" class="t2">lines up, faces fruit</text>
+            <rect x="500" y="342" width="210" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="605.0" y="378.0" text-anchor="middle" class="t1">Rear onto hind feet</text><text x="605.0" y="402.0" text-anchor="middle" class="t2">movement paused</text>
+            <rect x="750" y="342" width="210" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="855.0" y="378.0" text-anchor="middle" class="t1">Pick fruit</text><text x="855.0" y="402.0" text-anchor="middle" class="t2">trunk grabs it</text>
+            <rect x="990" y="342" width="190" height="84" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="1085.0" y="378.0" text-anchor="middle" class="t1">Lower</text><text x="1085.0" y="402.0" text-anchor="middle" class="t2">keeps picked fruit</text>
+            <line x1="230" y1="384" x2="250" y2="384" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="460" y1="384" x2="500" y2="384" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="710" y1="384" x2="750" y2="384" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="960" y1="384" x2="990" y2="384" stroke="#242424" stroke-width="1.5" marker-end="url(#a1)"/>
+            <line x1="200" y1="276" x2="465" y2="322" stroke="#242424" stroke-width="1.2" stroke-dasharray="5 5"/>
+            <line x1="600" y1="276" x2="722" y2="322" stroke="#242424" stroke-width="1.2" stroke-dasharray="5 5"/>
+            <text x="477" y="336" text-anchor="middle" class="t2">mouth</text><text x="732" y="336" text-anchor="middle" class="t2">wink</text>
+            <rect x="500" y="480" width="460" height="84" rx="10" fill="#fff" stroke="#b4472f" stroke-width="1.5"/><text x="730.0" y="516.0" text-anchor="middle" class="t1">Face lost or not calibrated</text><text x="730.0" y="540.0" text-anchor="middle" class="t2">lower safely; no fruit is picked</text>
+            <path d="M605,426 V480" fill="none" stroke="#b4472f" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#a1-r)"/>
+            <path d="M855,426 V480" fill="none" stroke="#b4472f" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#a1-r)"/>
+            <text x="20" y="500" class="t1">Why the portal?</text>
+            <text x="20" y="526" class="t2">Reaching the fruit needs an exact stopping</text>
+            <text x="20" y="550" class="t2">spot, which is hard to hit by hand.</text>
+          </svg>
+        </div>
+        <figcaption>Fig. 14 — System diagram: how the fruit interaction works, from face signals to elephant states.</figcaption>
+      </figure>
+
       <h4 class="section">✦ Integration test</h4>
       <p>Aurora and I finished our two basic interactions first: eating fruit (mine) and picking up the log (hers). Then we tested integrating them on my computer. Even with only two people, the recognition was clearly unstable.</p>
       <div class="gallery two">
         <figure>
           <img src="assets/source/W6/thu-integrate-1.jpg" alt="Two-person integration test in Unity: Aurora and I in the camera preview as P1 and P2, with roles set to Yuwen face, Aurora hands, Chunzi upper body; Performer 1 shows waiting or lost">
-          <figcaption>Fig. 14 — Roles assigned: my face, Aurora's hands. Even so, Performer 1 drops to “waiting / lost”.</figcaption>
+          <figcaption>Fig. 15 — Roles assigned: my face, Aurora's hands. Even so, Performer 1 drops to “waiting / lost”.</figcaption>
         </figure>
         <figure>
           <img src="assets/source/W6/thu-integrate-2.jpg" alt="The same integration test a few minutes later: both performers visible, but the elephant is still idle">
-          <figcaption>Fig. 15 — Both performers visible again a few minutes later.</figcaption>
+          <figcaption>Fig. 16 — Both performers visible again a few minutes later.</figcaption>
         </figure>
       </div>
 
       <p>So we tried sitting apart first, keeping our bodies from overlapping as much as possible.</p>
       <figure class="single medium">
         <img src="assets/source/W6/thu-integrate-apart.jpg" alt="Aurora and I sitting side by side with our hands raised, each tracked separately as P1 and P2 in the camera preview">
-        <figcaption>Fig. 16 — Sitting apart so each of us is tracked as a separate performer (P1 and P2).</figcaption>
+        <figcaption>Fig. 17 — Sitting apart so each of us is tracked as a separate performer (P1 and P2).</figcaption>
       </figure>
 
       <p>This time, all three of us combined. Three people turned out to be even more unstable, even though we weren't overlapping.</p>
       <div class="gallery three">
         <figure>
           <img src="assets/source/W6/thu-three-1.jpg" alt="Three of us sitting apart at a table; only two are tracked, and Performer 2 shows waiting or lost">
-          <figcaption>Fig. 17 — Two of three tracked; Performer 2 is “waiting / lost”.</figcaption>
+          <figcaption>Fig. 18 — Two of three tracked; Performer 2 is “waiting / lost”.</figcaption>
         </figure>
         <figure>
           <img src="assets/source/W6/thu-three-2.jpg" alt="A moment later only one of the three is tracked; Performers 2 and 3 are waiting or lost">
-          <figcaption>Fig. 18 — Moments later, only one is tracked.</figcaption>
+          <figcaption>Fig. 19 — Moments later, only one is tracked.</figcaption>
         </figure>
         <figure>
           <img src="assets/source/W6/thu-three-3.jpg" alt="Tracking jumps again: a different pair of us is tracked, and the person with raised hands is lost">
-          <figcaption>Fig. 19 — Tracking jumps to a different pair.</figcaption>
+          <figcaption>Fig. 20 — Tracking jumps to a different pair.</figcaption>
         </figure>
       </div>
 
       <div class="figure-notes">
         <figure>
           <img src="assets/source/W6/thu-split-screen.jpg" alt="The camera preview split into three vertical zones, one per person; all three performers are tracked and visible with their roles: Aurora hands, Yuwen face, Chunzi upper body">
-          <figcaption>Fig. 20 — With the screen split into three zones, all three of us are tracked at once.</figcaption>
+          <figcaption>Fig. 21 — With the screen split into three zones, all three of us are tracked at once.</figcaption>
         </figure>
         <ul class="notes">
           <li>Claude suggested splitting the screen, giving each person their own zone in the camera view.</li>
@@ -181,11 +229,53 @@
         </ul>
       </div>
 
+      <figure class="system-diagram">
+        <div class="diagram-scroll">
+          <svg viewBox="0 0 1200 590" role="img" aria-labelledby="a2-t">
+          <title id="a2-t">Three-person system: one webcam, view split into three zones, MediaPipe tracking, each performer assigned a role that drives one set of elephant actions; before and after splitting the screen</title>
+          <style>.t1{font:700 19px "Instrument Sans",Arial,sans-serif;fill:#242424}.t2{font:400 16px "Instrument Sans",Arial,sans-serif;fill:#555}.lane{font:700 13px "Instrument Sans",Arial,sans-serif;letter-spacing:.12em;fill:#888}</style>
+          <defs>
+            <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#242424"/></marker>
+            <marker id="a2-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b4472f"/></marker>
+          </defs>
+            <text x="20" y="28" class="lane">INPUT</text>
+            <text x="20" y="28" class="lane"></text>
+            <text x="460" y="28" class="lane">TRACKING</text><text x="710" y="28" class="lane">ROLES</text><text x="950" y="28" class="lane">ELEPHANT</text>
+            <rect x="20" y="190" width="180" height="100" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="110.0" y="234.0" text-anchor="middle" class="t1">One webcam</text><text x="110.0" y="258.0" text-anchor="middle" class="t2">3 performers</text>
+            <rect x="240" y="150" width="180" height="180" rx="10" fill="#f7f7f5" stroke="#242424" stroke-width="1.5"/>
+            <rect x="252" y="192" width="48" height="96" rx="4" fill="#fff" stroke="#242424" stroke-width="1"/><text x="276" y="246" text-anchor="middle" class="t2">P1</text>
+            <rect x="306" y="192" width="48" height="96" rx="4" fill="#fff" stroke="#242424" stroke-width="1"/><text x="330" y="246" text-anchor="middle" class="t2">P2</text>
+            <rect x="360" y="192" width="48" height="96" rx="4" fill="#fff" stroke="#242424" stroke-width="1"/><text x="384" y="246" text-anchor="middle" class="t2">P3</text>
+            <text x="330" y="176" text-anchor="middle" class="t1">Split view</text><text x="330" y="316" text-anchor="middle" class="t2">one person per zone</text>
+            <rect x="460" y="170" width="200" height="140" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="560.0" y="234.0" text-anchor="middle" class="t1">MediaPipe</text><text x="560.0" y="258.0" text-anchor="middle" class="t2">pose · face · hands</text>
+            <text x="560" y="340" text-anchor="middle" class="t2">neutral pose: body 10 s,</text><text x="560" y="362" text-anchor="middle" class="t2">face 2 s</text>
+            <line x1="200" y1="240" x2="240" y2="240" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <line x1="420" y1="240" x2="460" y2="240" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <rect x="700" y="60" width="210" height="96" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="805.0" y="102.0" text-anchor="middle" class="t1">Face · Yuwen</text><text x="805.0" y="126.0" text-anchor="middle" class="t2">mouth + winks</text>
+            <rect x="950" y="60" width="230" height="96" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="1065.0" y="114.0" text-anchor="middle" class="t1">Rear up · pick fruit</text>
+            <line x1="910" y1="108" x2="950" y2="108" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <path d="M660,240 C680,240 680,108 700,108" fill="none" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <rect x="700" y="200" width="210" height="96" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="805.0" y="242.0" text-anchor="middle" class="t1">Hands · Aurora</text><text x="805.0" y="266.0" text-anchor="middle" class="t2">grab / open palm</text>
+            <rect x="950" y="200" width="230" height="96" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="1065.0" y="254.0" text-anchor="middle" class="t1">Grab / release log</text>
+            <line x1="910" y1="248" x2="950" y2="248" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <path d="M660,240 C680,240 680,248 700,248" fill="none" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <rect x="700" y="340" width="210" height="96" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="805.0" y="382.0" text-anchor="middle" class="t1">Upper body · Chunzi</text><text x="805.0" y="406.0" text-anchor="middle" class="t2">left hand up · tilt shoulders</text>
+            <rect x="950" y="340" width="230" height="96" rx="10" fill="#fff" stroke="#242424" stroke-width="1.5"/><text x="1065.0" y="394.0" text-anchor="middle" class="t1">Walk and steer</text>
+            <line x1="910" y1="388" x2="950" y2="388" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <path d="M660,240 C680,240 680,388 700,388" fill="none" stroke="#242424" stroke-width="1.5" marker-end="url(#a2)"/>
+            <text x="1065" y="470" text-anchor="middle" class="t2">at the finish: sit on the log</text>
+            <rect x="20" y="500" width="560" height="70" rx="10" fill="#fff" stroke="#b4472f" stroke-width="1.5"/><text x="40" y="530" class="t1">Before: one shared frame</text><text x="40" y="555" class="t2">bodies overlap → IDs swap, performers “waiting / lost”</text>
+            <rect x="620" y="500" width="560" height="70" rx="10" fill="#f7f7f5" stroke="#242424" stroke-width="1.5"/><text x="640" y="530" class="t1">After: split into three zones</text><text x="640" y="555" class="t2">each zone holds one person → all three tracked</text>
+          </svg>
+        </div>
+        <figcaption>Fig. 22 — System diagram: how three performers share one elephant.</figcaption>
+      </figure>
+
       <h4 class="section">✦ A final interaction with the log</h4>
       <div class="figure-notes">
         <figure>
           <img src="assets/source/W6/thu-sit-on-log.jpg" alt="At the end of the course, the elephant sits on the log it carried, with three performers tracked in split-screen zones; the panel reads Seated on the log">
-          <figcaption>Fig. 21 — At the finish, the elephant sits on the log to rest.</figcaption>
+          <figcaption>Fig. 23 — At the finish, the elephant sits on the log to rest.</figcaption>
         </figure>
         <ul class="notes">
           <li>Aurora's hand gestures can both grab and release the log, but our earlier interactions mainly showed grabbing.</li>
@@ -197,7 +287,7 @@
       <div class="figure-notes">
         <figure>
           <img src="assets/source/W6/thu-scene-change.jpg" alt="Claude Code next to the Unity editor: the new scene has a darker sky, glowing blue trees, and a rainbow path around the elephant">
-          <figcaption>Fig. 22 — Then we changed the scene with Claude Code (prompts translated from Chinese).</figcaption>
+          <figcaption>Fig. 24 — Then we changed the scene with Claude Code (prompts translated from Chinese).</figcaption>
         </figure>
         <ul class="notes">
           <li>We asked Claude Code to make the sky darker and let the trees glow.</li>

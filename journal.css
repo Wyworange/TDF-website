@@ -213,3 +213,8 @@ strong { font-weight: 700; }
 }
 :is(.week-six-page, .week-seven-page) .mapping-table td:last-child, :is(.week-six-page, .week-seven-page) .mapping-table th:last-child { text-align: left; white-space: normal; }
 :is(.week-six-page, .week-seven-page) .mapping-table td:first-child { width: 42%; }
+
+/* Week 7: hand-drawn system diagrams. */
+.week-seven-page .system-diagram { margin: 32px 0 56px; }
+.week-seven-page .diagram-scroll { border: 1px solid #d8d8d8; background: #fbfbf9; padding: 24px; overflow-x: auto; }
+.week-seven-page .diagram-scroll svg { display: block; width: 100%; min-width: 820px; height: auto; }
