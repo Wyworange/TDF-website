@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Butterfly Dome — Portfolio</title>
+<style>
+@font-face{font-family:"Instrument Sans";font-weight:400;src:url("assets/fonts/instrument-sans-regular.ttf") format("truetype")}
+@font-face{font-family:"Instrument Sans";font-weight:700;src:url("assets/fonts/instrument-sans-bold.ttf") format("truetype")}
+:root{--ink:#242424;--soft:#4a4a4a;--muted:#777;--rule:#777;--line:#d8d8d8;--panel:#f7f7f5}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#e9e9e6}
+body{font-family:"Instrument Sans",Arial,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+
+/* one page = one PDF page, 1600 x 900 */
+.page{width:1600px;height:900px;background:#fff;padding:40px 56px 0;display:flex;flex-direction:column;position:relative;overflow:hidden}
+@page{size:1600px 900px;margin:0}
+@media print{html,body{background:#fff}.page{margin:0!important;zoom:1!important;break-after:page}.hint{display:none}}
+@media screen{body{padding:24px 0 48px}.page{margin:0 auto 24px;zoom:var(--z,1);box-shadow:0 2px 14px #0002}.hint{width:1600px;margin:0 auto 14px;font-size:13px;color:#777;zoom:var(--z,1)}}
+
+/* masthead, same as the journal site */
+.masthead{display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:baseline;padding-bottom:9px;border-bottom:1px solid var(--rule)}
+.masthead h1{font-size:44px;font-weight:700;line-height:1.05;letter-spacing:-.035em;white-space:nowrap}
+.masthead h1:nth-child(2){text-align:center}
+.masthead h1:last-child{text-align:right}
+.body{flex:1;min-height:0;padding:30px 0 0;display:grid;grid-template-rows:minmax(0,1fr)}
+.foot{height:46px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+
+h3{font-size:22px;font-weight:700;line-height:1.2;margin-bottom:8px}
+p,li{font-size:17px;line-height:1.45;color:var(--soft)}
+b{color:var(--ink)}
+.cap{font-size:14px;line-height:1.3;color:var(--muted);height:20px;margin-top:8px;white-space:nowrap;overflow:hidden}
+.frame{border:1px solid var(--line)}
+
+/* ---------- page 1 ---------- */
+.p1{display:grid;grid-template-columns:560px 1fr;gap:48px;min-height:0}
+.p1 .text{display:flex;flex-direction:column;gap:22px}
+.p1 .lede{font-size:36px;line-height:1.15;color:var(--ink);letter-spacing:-.01em}
+.p1 ul{list-style:none;display:grid;gap:6px}
+.p1 li{padding-left:18px;position:relative}
+.p1 li::before{content:"–";position:absolute;left:0;color:var(--muted)}
+.p1 .board{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:20px;min-height:0}
+.p1 figure{display:flex;flex-direction:column;min-height:0}
+.p1 figure .im{flex:1;min-height:0;overflow:hidden}
+.p1 .sk .im{background:#f7f6f2;border:1px solid var(--line)}
+.p1 .sk img{object-fit:contain;padding:10px}
+.p1 .rd .im{background:#fafaf8;border:1px solid var(--line)}
+.p1 .rd img{object-fit:contain}
+
+/* ---------- page 2 ---------- */
+.p2{display:flex;flex-direction:column;min-height:0}
+.intro{font-size:20px;color:var(--ink);margin-bottom:22px}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr 2fr 1fr;gap:24px;flex:1;min-height:0}
+.step{display:flex;flex-direction:column;border-top:1px solid var(--rule);padding-top:12px;min-height:0}
+.step .n{font-size:15px;color:var(--muted);height:20px}
+.step h3{height:30px;margin:2px 0 12px}
+.step .im{height:340px;overflow:hidden;display:grid;gap:8px}
+.step .im.stack{grid-template-rows:repeat(2,minmax(0,1fr))}
+.step .im.stack img{min-height:0}
+.step .im.mech{border:1px solid var(--line)}
+.step .im.mech img{object-fit:contain;background:#fff}
+.step p{font-size:15.5px;margin-top:14px}
+.tag{margin-top:auto;align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);padding:5px 9px}
+.tag.no{text-decoration:line-through}
+.shift{margin-top:24px;display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;background:var(--panel);border:1px solid var(--line);padding:16px 24px}
+.shift p{font-size:16px}
+.shift .ar{font-size:30px;text-align:center}
+
+/* ---------- page 3 ---------- */
+.p3{display:grid;grid-template-columns:440px 320px 1fr;gap:32px;min-height:0}
+.p3 .col{display:flex;flex-direction:column;min-height:0}
+.p3 .photo{flex:1;min-height:0;overflow:hidden}
+.p3 .neutral img{object-position:50% 25%}
+.p3 .right{display:flex;flex-direction:column;justify-content:space-between;min-height:0;padding-bottom:28px}
+.trip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.trip .im{aspect-ratio:4/3;overflow:hidden}
+.trip .lab{font-size:15px;margin-top:7px;color:var(--ink)}
+.trip .lab b{margin-right:5px}
+.flow{font-size:16.5px;line-height:1.6;color:var(--soft)}
+.flow b{font-weight:700}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0}
+.nums div{font-size:14px;color:var(--muted);line-height:1.25}
+.nums strong{display:block;font-size:30px;color:var(--ink);letter-spacing:-.02em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.two ul{list-style:none;display:grid;gap:5px}
+.two li{font-size:15.5px;padding-left:16px;position:relative}
+.two li::before{content:"–";position:absolute;left:0;color:var(--muted)}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lnk{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:10px 12px}
+.lnk .th{width:46px;height:46px;flex:none;overflow:hidden;position:relative;background:#242424;color:#fff;display:grid;place-items:center;font-size:18px;font-weight:700}
+.lnk .th img{position:absolute;inset:0;opacity:.75}
+.lnk .th span{position:relative}
+.lnk .t{font-size:15px;font-weight:700}
+.lnk .u{font-size:13px;color:var(--muted);border-bottom:1px solid #999;display:inline-block;margin-top:2px}
+</style>
+</head>
+<body>
+<p class="hint">Butterfly Dome · 3 portfolio pages, 1600 × 900. Export: Print → Save as PDF, margins "None", "Background graphics" on.</p>
+
+<!-- ============ 1 · CONCEPT & CONTEXT ============ -->
+<section class="page">
+  <header class="masthead"><h1>Butterfly Dome</h1><h1>Concept &amp; Context</h1><h1>Yuwen Wang</h1></header>
+  <div class="body">
+    <div class="p1">
+      <div class="text">
+        <p class="lede">A kinetic sculpture that wakes up to a hand gesture: close your hand, open it, and a wave of wings runs over the dome.</p>
+        <div>
+          <h3>✦ Concept</h3>
+          <p>Seven translucent, lace-like butterflies sit on a 3D-printed dome. A webcam watches for one gesture, a fist and then an open palm. When it sees it, the butterflies close and reopen their wings one after another.</p>
+        </div>
+        <div>
+          <h3>✦ Goals</h3>
+          <ul>
+            <li><b>One hidden motor</b> drives every butterfly. All the mechanics stay inside the plinth.</li>
+            <li><b>Delicate wings</b> that read as lace but still survive repeated motion.</li>
+            <li><b>No touch:</b> a natural hand gesture is the only input.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>✦ Context</h3>
+          <p>Made for the Expressive Mechanics project in TDF, where the brief was to make motion itself expressive. Inspired by Iris van Herpen's kinetic, lace-like butterfly pieces and by images of hands releasing butterflies. Opening a hand became the trigger.</p>
+        </div>
+      </div>
+      <div class="board">
+        <figure><div class="im"><img src="assets/inspo-hands.jpg" alt="Sculpture of two white hands holding golden butterflies"></div><div class="cap">Inspiration: hands releasing butterflies</div></figure>
+        <figure><div class="im"><img src="assets/inspo-face.jpg" alt="Portrait of a face covered with butterflies"></div><div class="cap">Inspiration: butterflies as a living surface</div></figure>
+        <figure class="rd"><div class="im"><img src="assets/render.jpg" alt="CAD render of the dome covered with laser-cut butterflies"></div><div class="cap">Design intent: CAD render of the dome</div></figure>
+        <figure class="sk"><div class="im"><img src="assets/sketch-wings.jpg" alt="Sketch of a butterfly with the mechanism hidden in its body"></div><div class="cap">Mechanism hidden in the body</div></figure>
+        <figure class="sk"><div class="im"><img src="assets/sketch-hand.jpg" alt="Notebook page: butterflies on a hand and pull mechanisms"></div><div class="cap">Exploring forms on a hand</div></figure>
+        <figure class="sk"><div class="im"><img src="assets/sketch-arm.jpg" alt="Sketch of a stand with butterflies, motor and Arduino in the base"></div><div class="cap">Electronics in the base</div></figure>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Expressive Mechanics · Portfolio</span><span>1 / 3</span></div>
+</section>
+
+<!-- ============ 2 · PROCESS & ITERATION ============ -->
+<section class="page">
+  <header class="masthead"><h1>Butterfly Dome</h1><h1>Process &amp; Iteration</h1><h1>Yuwen Wang</h1></header>
+  <div class="body">
+    <div class="p2">
+      <p class="intro">Five rounds: test in paper, learn the laser cutter, build a mechanism that failed, then replace it with a simpler one that worked.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div><h3>Paper prototype</h3>
+          <div class="im"><img src="assets/01-paper.jpg" alt="Paper butterfly with folding wings held in a hand"></div>
+          <p>Before using any machine, I tested folding wings in paper. One pulled thread can close a pair of wings.</p>
+          <span class="tag">Idea works</span>
+        </div>
+        <div class="step">
+          <div class="n">02</div><h3>Laser-cut wings</h3>
+          <div class="im stack"><img src="assets/02-lasercut-melted.jpg" alt="First laser cut with a melted line"><img src="assets/02-lasercut-clean.jpg" alt="Clean laser-cut translucent butterfly"></div>
+          <p>The first cut melted the film (top). At −46% vector power the edge came out clean (bottom). Thin webs tore, so every web is now at least 2&nbsp;mm.</p>
+          <span class="tag">Rule: webs ≥ 2 mm</span>
+        </div>
+        <div class="step">
+          <div class="n">03</div><h3>Pinch-fold wings</h3>
+          <div class="im"><img src="assets/03-pinch.jpg" alt="Squeezing the butterfly wings inward by hand"></div>
+          <p>Acrylic levers pinched the wings shut. The levers didn't fit as drawn, and closing needed more force than the fishing line could hold.</p>
+          <span class="tag no">Dropped</span>
+        </div>
+        <div class="step">
+          <div class="n">04</div><h3>Split wings + cam drum</h3>
+          <div class="im mech"><img src="assets/04-mechanism.jpg" alt="Diagram of the split-wing mechanism, open and closed: tape hinge, Y-thread, PTFE sheath, rocker and cam"></div>
+          <p>Each wing now hinges on tape and is pulled down by a Y-thread. A 6.3&nbsp;mm pull closes it about 60°. One servo turns a drum of 12 cams, and each cam pulls one line through a PTFE sheath at its own moment.</p>
+          <span class="tag">Small force, one motor</span>
+        </div>
+        <div class="step">
+          <div class="n">05</div><h3>Print &amp; assemble</h3>
+          <div class="im stack"><img src="assets/05-print.jpg" alt="3D-printed dome and plinth with PTFE sheaths"><img src="assets/05-assemble.jpg" alt="Butterflies mounted on the dome during assembly"></div>
+          <p>Dome, plinth and drum printed in PLA. The first lines were too tight, so the wings couldn't close. Lines are now tied at servo 0° with ≈0.5&nbsp;mm slack.</p>
+          <span class="tag">Rule: tie with slack</span>
+        </div>
+      </div>
+      <div class="shift">
+        <p><b>Before:</b> pinch-fold wings. High force, fiddly levers, and the line wasn't strong enough.</p>
+        <div class="ar">→</div>
+        <p><b>After:</b> split wings on a tape hinge, a few millimetres of pull, and one servo that times seven butterflies.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Expressive Mechanics · Portfolio</span><span>2 / 3</span></div>
+</section>
+
+<!-- ============ 3 · FINAL PROTOTYPE & OUTCOME ============ -->
+<section class="page">
+  <header class="masthead"><h1>Butterfly Dome</h1><h1>Final Prototype &amp; Outcome</h1><h1>Yuwen Wang</h1></header>
+  <div class="body">
+    <div class="p3">
+      <div class="col">
+        <div class="photo"><img src="assets/final.jpg" alt="The finished Butterfly Dome on a table, with the laptop running the gesture page behind it"></div>
+        <div class="cap">The finished dome, with the gesture page running behind it</div>
+      </div>
+      <div class="col">
+        <div class="photo neutral"><img src="assets/neutral.jpg" alt="The dome with butterflies held up against a plain black backdrop"></div>
+        <div class="cap">Ø150 mm dome · polyester wings · PLA</div>
+      </div>
+      <div class="right">
+        <div>
+          <h3>✦ How you use it</h3>
+          <div class="trip">
+            <figure><div class="im"><img src="assets/gesture-fist.jpg" alt="A visitor makes a fist in front of the dome"></div><div class="lab"><b>1</b>Make a fist</div></figure>
+            <figure><div class="im"><img src="assets/gesture-open.jpg" alt="The visitor opens their hand"></div><div class="lab"><b>2</b>Open it within 2 s</div></figure>
+            <figure><div class="im"><img src="assets/gesture-wave.jpg" alt="The butterflies on the dome move"></div><div class="lab"><b>3</b>The wings wave</div></figure>
+          </div>
+        </div>
+        <div>
+          <h3>✦ How it works</h3>
+          <p class="flow"><b>Webcam</b> → <b>MediaPipe</b> hand tracking → <b>Arduino</b> over USB serial → <b>MG90S servo</b> sweeps 0→180→0° → <b>12-disc cam drum</b> → <b>rockers</b> pull lines in PTFE sheaths → <b>wings close ≈60°</b>, one after another.</p>
+        </div>
+        <div class="nums">
+          <div><strong>7</strong>butterflies</div>
+          <div><strong>1</strong>servo for all</div>
+          <div><strong>12</strong>timed cams</div>
+          <div><strong>≈9 s</strong>per wave</div>
+        </div>
+        <div class="two">
+          <div>
+            <h3>✦ Outcome</h3>
+            <ul>
+              <li>One gesture plays a full, travelling wave of wings.</li>
+              <li>All the motion comes from one hidden servo.</li>
+              <li>No springs: wings reopen by their own weight.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>✦ Next iteration</h3>
+            <ul>
+              <li>Channels sized to bought parts were tiny and hard to assemble.</li>
+              <li>Not every butterfly got the mechanism.</li>
+              <li>v2: one spool replaces cams and rockers.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="links">
+          <a class="lnk" href="assets/demo.mp4"><div class="th"><img src="assets/video-poster.jpg" alt=""><span>▶</span></div><div><div class="t">Demo video</div><span class="u">assets/demo.mp4</span></div></a>
+          <a class="lnk" href="https://github.com/wyworange/butterfly-dome"><div class="th"><span>{ }</span></div><div><div class="t">Code, CAD &amp; laser files</div><span class="u">github.com/wyworange/butterfly-dome</span></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Expressive Mechanics · Portfolio</span><span>3 / 3</span></div>
+</section>
+
+<script>
+function fit(){document.documentElement.style.setProperty('--z',Math.min(1,(innerWidth-32)/1600))}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
