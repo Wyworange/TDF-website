@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 10 — 3D Printing</title>
+    <link rel="stylesheet" href="journal.css">
+  </head>
+  <body class="week-seven-page week-nine-page">
+    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>3D Printing</h1><h1>Yuwen Wang</h1></header>
+
+    <main>
+      <h2 class="week-title">Week 10</h2>
+      <h3 class="day">Tuesday, Oct 27 · Diagrams &amp; 3D printing</h3>
+
+      <h4 class="section">✦ Diagrammatic analysis</h4>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W10/figma/diagrammatic-analysis.jpg" alt="Slide: What the heck is a diagrammatic analysis? A circuit schematic, a stage flowchart from power unit to display stage, and a system diagram"></figure>
+        <ul class="notes">
+          <li>Use a diagram to analyse the system.</li>
+          <li>Start from the circuit board.</li>
+        </ul>
+      </div>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W10/figma/color-codes.jpg" alt="Slide: Color Codes TDF. Yellow 12V, red 5V, orange 3.3V, black 0V ground GND"></figure>
+        <ul class="notes">
+          <li><strong>Yellow</strong>: 12V</li>
+          <li><strong>Red</strong>: 5V</li>
+          <li><strong>Orange</strong>: 3.3V</li>
+          <li><strong>Black</strong>: 0V, ground, GND</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ Different techniques of 3D printing</h4>
+      <figure class="single medium"><img src="assets/source/W10/figma/am-technologies.jpg" alt="Hubs chart of additive manufacturing technologies grouped by process family"></figure>
+      <p>Increasing the resolution increases the print time, so always start with a rough one.</p>
+
+      <h4 class="section">✦ Making 3D printing more efficient</h4>
+      <div class="gallery two">
+        <figure><img src="assets/source/W10/figma/cad-design-tips.jpg" alt="Poster: CAD design tips for 3D printing by Billie Ruben, designing for additive manufacturing"><figcaption>Designing for additive manufacturing is needed to take full advantage of its unique strengths.</figcaption></figure>
+        <figure><img src="assets/source/W10/figma/hands-on-videos.jpg" alt="Slide: Hands on stuff, favourite video guides from Stephan and Slant 3D"><figcaption>Video guides: Stephan and Slant 3D.</figcaption></figure>
+      </div>
+
+      <h4 class="section">✦ What we print with</h4>
+      <div class="gallery three">
+        <figure><img src="assets/source/W10/figma/pla.jpg" alt="Slide: PLA is inexpensive, strong and easy to print, with low temperature resistance (soft above 50°C)"><figcaption><strong>PLA:</strong> cheap, strong, easy. Softens above 50°C.</figcaption></figure>
+        <figure><img src="assets/source/W10/figma/petg.jpg" alt="Slide: PETG, heat resistant to about 70°C, tougher but sensitive to moisture; ABS or ASA up to about 100°C, printed in an enclosure"><figcaption><strong>PETG:</strong> about 70°C, tougher, but takes in moisture. ABS / ASA go up to about 100°C.</figcaption></figure>
+        <figure><img src="assets/source/W10/figma/tpu.jpg" alt="Slide: TPU is flexible and tough, harder to print the softer it gets, moisture sensitive"><figcaption><strong>TPU:</strong> flexible and tough. Slow the machine down and print carefully.</figcaption></figure>
+      </div>
+
+      <h4 class="section">✦ Basic settings for successful printing</h4>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W10/figma/slicer-settings.jpg" alt="Slide: basic settings for successful printing, with the slicer interface numbered. Go big, large layer heights 0.20 or more, no high resolution prints, infill under 15 percent, brims help bed adhesion"></figure>
+        <ul class="notes">
+          <li><strong>Print settings for a rough prototype:</strong> fast and strong enough. Layer height ≥ 0.20, no high resolution, infill &lt; 15%.</li>
+          <li><strong>Brim:</strong> increases the contact area. The bigger the part, the higher the chance it shrinks.</li>
+          <li>On a large-scale object, use two or more walls to hide the infill.</li>
+          <li>Wipe the print plate with alcohol, and wash it with soap.</li>
+        </ul>
+      </div>
+
+      <hr class="section-divider">
+
+      <h3 class="day">Thursday, Oct 29 · 3D printed rings &amp; motor test</h3>
+
+      <h4 class="section">✦ Rings, printed this time</h4>
+      <div class="gallery three">
+        <figure><img src="assets/source/W10/figma/ring-slicer.jpg" alt="The eye ring and finger ring models laid out on the slicer build plate"></figure>
+        <figure><img src="assets/source/W10/figma/ring-fist.jpg" alt="The white 3D printed finger ring worn on a raised fist"></figure>
+        <figure><img src="assets/source/W10/figma/ring-hand.jpg" alt="The white 3D printed ring worn on an open hand"></figure>
+      </div>
+      <p><strong>Reflection:</strong> compared to the laser cutter, 3D printing takes much more time, so it is harder to do many iterations in a short period.</p>
+
+      <h4 class="section">✦ Motor validation</h4>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W10/figma/dc-motor-validation.jpg" alt="Motor test on the desk: Arduino and breadboard wired to a small DC motor, a 2×AA battery pack and a potentiometer"></figure>
+        <p>Testing a DC motor on the Arduino and breadboard, powered by a battery pack, with a potentiometer as the input.</p>
+      </div>
+
+      <a class="back" href="index.html">← Back to journal</a>
+    </main>
+  </body>
+</html>
