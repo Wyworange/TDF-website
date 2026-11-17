@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Week 9 — Arduino &amp; Rings</title>
+    <link rel="stylesheet" href="journal.css">
+  </head>
+  <body class="week-seven-page week-nine-page">
+    <header class="masthead"><h1><a href="index.html">TDF</a></h1><h1>Arduino &amp; Rings</h1><h1>Yuwen Wang</h1></header>
+
+    <main>
+      <h2 class="week-title">Week 9</h2>
+      <h3 class="day">Tuesday, Oct 20 · Arduino basics &amp; laser cutting</h3>
+
+      <h4 class="section">✦ Resistor color code</h4>
+      <p>The question I started with: how does a potentiometer encode the degrees of a servo motor? Before getting there, we had to learn to read our resistors.</p>
+      <div class="gallery two">
+        <figure>
+          <img src="assets/source/W9/figma/tue-resistor-table.jpg" alt="Resistor color code table: black 0 to white 9, with multiplier and tolerance columns, plus the mnemonic Bad Beer Rots Our Young Guts But Vodka Goes Well">
+          <figcaption>Color → significant figures, multiplier and tolerance.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/source/W9/figma/tue-resistor-bands.jpg" alt="Diagram of 4-band, 5-band and 6-band resistors, showing which band is the first digit, multiplier, tolerance and temperature coefficient">
+          <figcaption>4-, 5- and 6-band resistors.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>What is the difference between the blue resistor and the light brown one?</strong></p>
+      <div class="figure-notes">
+        <div class="gallery two nine-tight">
+          <figure><img src="assets/source/W9/figma/tue-resistors-apart-1.jpg" alt="Light brown resistors in our kit: 330 ohm (orange orange black brown) for LEDs and 10k ohm (brown black orange brown) for LDRs and switches"></figure>
+          <figure><img src="assets/source/W9/figma/tue-resistors-apart-2.jpg" alt="Blue resistors in our kit for RGB LEDs: 470 ohm (yellow purple black black brown) and 430 ohm (yellow orange black black brown)"></figure>
+        </div>
+        <ul class="notes">
+          <li><strong>Light brown:</strong> the metal band (silver or gold) sits at one end. That end is the tolerance, so I start reading from the other side.</li>
+          <li><strong>Blue:</strong> it begins with the yellow band.</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ In-class attempt: Hello, world over serial</h4>
+      <div class="gallery two">
+        <figure><img src="assets/source/W9/figma/tue-ide-hello-world.jpg" alt="Arduino IDE open on my laptop with the Hello World sketch"></figure>
+        <figure><img src="assets/source/W9/figma/tue-serial-monitor.jpg" alt="Arduino IDE serial monitor at 9600 baud printing Hello, world! repeatedly"></figure>
+      </div>
+      <ul class="notes">
+        <li><strong>USB</strong> stands for Universal Serial Bus.</li>
+        <li><code>/* */</code> and <code>//</code> are comments. They are for humans and are greyed out for the compiler. Comments help me understand code that an agent or somebody else wrote.</li>
+        <li>To receive the message, we need to start serial communication at a defined speed, here a 9600 baud rate.</li>
+      </ul>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W9/figma/tue-baud-rate.jpg" alt="Serial.begin(9600) in the code and the 9600 baud setting in the serial monitor, both circled in red"></figure>
+        <ul class="notes">
+          <li>The baud rate in the code and in the serial monitor needs to be the same.</li>
+          <li>9600 is the common default. 115200 is the standard when communicating with the web.</li>
+          <li>Without a <code>delay</code> line, the code runs as fast as it can. Taking out the serial print makes it run faster too.</li>
+        </ul>
+      </div>
+
+      <h4 class="section">✦ Variables, voltage and the blink sketch</h4>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W9/figma/tue-blink-code.jpg" alt="Blink sketch: int led = 13, pinMode in setup, then digitalWrite HIGH, delay 1000, LOW, delay 1000 in the loop"></figure>
+        <ul class="notes">
+          <li>In this case the variable is 13. It is the pin number, not the LED itself. When the LED is on D12, the variable is 12.</li>
+          <li>LOW and HIGH refer to voltage from 0 to 5V, because 5V is the maximum an Arduino can provide.</li>
+          <li>2.5V is the split line: everything below is LOW, everything above is HIGH.</li>
+          <li>Still wondering: how does an LED work? Electrons jump, and that becomes light.</li>
+        </ul>
+      </div>
+      <figure class="single nine-small"><img src="assets/source/W9/figma/tue-arduino-board.jpg" alt="Our Elegoo Arduino board in the kit box"></figure>
+
+      <h4 class="section">✦ Laser cutter: digital fabrication</h4>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W9/figma/tue-digital-fabrication.jpg" alt="Lecture slide: Digital Fabrication, laser cutting, with a diagram of the laser cutting process"></figure>
+        <div>
+          <p><strong>2D → 3D → joining technique</strong></p>
+          <ol class="notes">
+            <li>Finger joint (tab and slots). Only if you have no choice.</li>
+            <li>Mortise and tenon. Usually very strong, and allows a free edge.</li>
+            <li>Tusk tenon / pinned joints.</li>
+            <li>Snap-fit joints. Designed properly, they can flex.</li>
+            <li>Slot hook &amp; T.</li>
+            <li>Fastener &amp; hardware joints / captive nut joint.</li>
+          </ol>
+        </div>
+      </div>
+      <figure class="single medium"><img src="assets/source/W9/figma/tue-stack-and-frame.jpg" alt="Stack and frame: box thickness created by stacking acrylic frames, and a stacked wooden frame enclosure"><figcaption>Stack and frame: thickness built up by stacking layers.</figcaption></figure>
+      <div class="gallery two">
+        <figure><img src="assets/source/W9/figma/tue-kerf-bending.jpg" alt="Slide: flexures and kerf bending. Rows of alternating slits let rigid sheets twist and flex"><figcaption>Kerf bending: more cross-section area cut away means more flex.</figcaption></figure>
+        <figure><img src="assets/source/W9/figma/tue-flex-hinges.jpg" alt="Poorly designed flex hinges: wooden shapes with different lattice patterns, most of them broken"><figcaption>Not all of these patterns worked; most of them broke. Consider the thickness of materials.</figcaption></figure>
+      </div>
+
+      <h4 class="section">✦ Homework: laser cut rings</h4>
+      <div class="figure-notes">
+        <figure><img src="assets/source/W9/figma/tue-laser-cut-rings-brief.jpg" alt="Assignment slide: Laser cut rings, make it your own. Constraints: simplicity, fit, finish, due next Thursday"></figure>
+        <ul class="notes">
+          <li><strong>Must have:</strong> a presence of you, sanding, no burnt edges.</li>
+          <li>Cut 5–6 different sizes to find the right fit quickly.</li>
+          <li>Thermal expansion will affect the size.</li>
+          <li>Expect iterations, and failures.</li>
+          <li>Shoot it like a commercial product photo, using light boxes.</li>
+          <li>There is also a metal laser cutter (ask Gary). Material: 5mm.</li>
+        </ul>
+      </div>
+
+      <section class="nine-lab">
+        <h4 class="section">✦ Rainbow Pak-Man</h4>
+
+        <div class="figure-notes">
+          <figure class="nine-gif"><img src="assets/source/W9/medium/01-changing-colors-web.gif" alt="Playing the Pak-Man game on the laptop while the physical RGB LED beside it changes color" loading="lazy"><figcaption>Changing colors.</figcaption></figure>
+          <div>
+            <p>An interactive exploration game inspired by white balance. A Pak-Man on screen is connected to a physical Arduino RGB LED. Moving through a dark maze adjusts color temperature and tint, which changes both the on-screen color and the LED. Hidden treasures gradually appear within the beam.</p>
+            <p>The project turns color mixing and white balance into a playful experience that bridges the screen and the physical world.</p>
+            <p><strong>Components:</strong> Arduino Uno, breadboard, 220Ω resistors, red / green / blue LEDs, wires.</p>
+          </div>
+        </div>
+
+        <p class="iteration-label">How it works</p>
+        <ol class="nine-flow">
+          <li><span>1</span><strong>Web game</strong><small>Pak-Man moves through the maze</small></li>
+          <li><span>2</span><strong>Map position → color</strong><small>temperature + tint → R, G, B</small></li>
+          <li><span>3</span><strong>Serial command</strong><small><code>C,r,g,b</code> or <code>B,r,g,b</code></small></li>
+          <li><span>4</span><strong>Arduino parses</strong><small>checks format, clamps 0–255</small></li>
+          <li><span>5</span><strong>RGB LED</strong><small>PWM on pins 9 / 10 / 11</small></li>
+        </ol>
+
+        <p class="iteration-label">Step 1 · Original code tests</p>
+        <div class="figure-notes">
+          <figure class="nine-gif"><img src="assets/source/W9/medium/02-original-code-test-web.gif" alt="Three LEDs on the breadboard fading through red, green and blue" loading="lazy"></figure>
+          <ul class="notes">
+            <li><strong>Fading LED:</strong> a counter <code>i</code> runs 0→763 in three phases. In each phase one channel goes down by 1 while the next goes up by 1 (red→green→blue→red), then the counter resets.</li>
+            <li><code>analogWrite</code> sends the 0–255 values to pins 9, 10 and 11. <code>wait = 5</code>ms sets the fade speed.</li>
+          </ul>
+        </div>
+
+        <p class="iteration-label">Step 2 · Circuit arrangement</p>
+        <figure class="single medium"><img src="assets/source/W9/medium/03-circuit.jpg" alt="Before and after: the three LEDs moved from spread out on the breadboard to clustered close together" loading="lazy"><figcaption>I moved the three LEDs closer together so the light blends more seamlessly.</figcaption></figure>
+
+        <p class="iteration-label">Step 3 · Controlled by the serial monitor</p>
+        <div class="figure-notes">
+          <figure class="nine-portrait"><img src="assets/source/W9/medium/04-serial-monitor-web.gif" alt="Typing color commands into the serial monitor changes the LED color" loading="lazy"></figure>
+          <ul class="notes">
+            <li>Commands are <code>&lt;colorCode&gt;&lt;colorVal&gt;</code>: <code>r</code>, <code>g</code> or <code>b</code>, then a number from 0 to 255.</li>
+            <li><code>r0</code> turns red off, <code>g127</code> sets green to half and <code>b64</code> sets blue to a quarter.</li>
+            <li>The Arduino reads the serial bytes into a string, takes the first character as the channel and converts the rest with <code>atoi</code>.</li>
+          </ul>
+        </div>
+
+        <p class="iteration-label">Step 4 · Concept: white balance → Pak-Man</p>
+        <div class="figure-notes">
+          <figure><img src="assets/source/W9/medium/05-white-balance.jpg" alt="Camera white balance adjustment, from cool to warm color temperature" loading="lazy"><figcaption>White balance adjustment in a camera.</figcaption></figure>
+          <p>The first idea came from how white balance works. To make the interaction more engaging, I turned it into Pak-Man-style gameplay.</p>
+        </div>
+
+        <p class="iteration-label">Step 5 · Diffuser iteration</p>
+        <div class="figure-notes">
+          <figure><img src="assets/source/W9/medium/06-diffusion-principle.png" alt="Diagram of how a diffuser scatters direct light in many directions" loading="lazy"><figcaption>Principle of light diffusion.</figcaption></figure>
+          <p>A diffuser scatters direct, concentrated light in many directions, using translucent materials or textured surfaces. This makes the light source look bigger and reduces harsh shadows and glare. I tried different ways to diffuse the light.</p>
+        </div>
+        <div class="gallery two development-gallery">
+          <figure><img src="assets/source/W9/medium/07-iterations-a.jpg" alt="Diffuser tests: biodegradable packaging refills, cotton fluff, and a 3D printed stacked shade" loading="lazy"><figcaption>Biodegradable packaging refills and 3D printing.</figcaption></figure>
+          <figure><img src="assets/source/W9/medium/08-iterations-b.jpg" alt="More diffuser tests: bare red, green and blue LEDs, folded paper, a plastic bag, and the 3D printed shade" loading="lazy"><figcaption>Paper folds, plastic and the final 3D printed shade.</figcaption></figure>
+        </div>
+
+        <p class="iteration-label">Step 6 · Upgraded code</p>
+        <div class="figure-notes">
+<pre class="nine-code"><code>// website → Arduino, one line per command
+C,255,180,90   // set color
+B,255,180,90   // set color + blink 3 times
+
+// Arduino → website
+READY,WBPM1    // handshake on boot
+OK,r,g,b       // command accepted
+ERR,FORMAT | ERR,COMMAND | ERR,TOO_LONG</code></pre>
+          <ul class="notes">
+            <li><strong>Protocol:</strong> commands arrive line by line (<code>\n</code>) into a 40-character buffer and are parsed with <code>sscanf("%c,%d,%d,%d")</code>.</li>
+            <li><strong>Handshake:</strong> the website waits for <code>READY</code> before it reports that it is synced.</li>
+            <li><strong>Red calibration:</strong> the red channel is scaled by 0.36 before it is written to the pin.</li>
+            <li><strong>Non-blocking blink:</strong> the code uses <code>millis()</code> instead of <code>delay()</code>. It toggles every 120ms, and 6 toggles make 3 flashes. That way the serial input is never blocked.</li>
+          </ul>
+        </div>
+
+        <figure class="single narrow"><img src="assets/source/W9/figma/tue-rgb-circuit.jpg" alt="Arduino Uno R4 Minima wired to red, green and blue LEDs on the breadboard" loading="lazy"></figure>
+      </section>
+
+      <hr class="section-divider">
+
+      <h3 class="day">Thursday, Oct 22 · Laser cut rings</h3>
+
+      <h4 class="section">✦ Sketches</h4>
+      <div class="gallery two">
+        <figure><img src="assets/source/W9/figma/thu-sketches.jpg" alt="Blue pen sketches of ring ideas: eyes with lashes, fingernails, a POP speech bubble, flower and gear shaped rings"></figure>
+        <figure><img src="assets/source/W9/figma/thu-hand-sketch.jpg" alt="Sketch of a hand wearing rings, with small umbrella and bat ideas"></figure>
+      </div>
+
+      <h4 class="section">✦ From sketch to vector</h4>
+      <div class="figure-notes">
+        <figure class="nine-medium-figure"><img src="assets/source/W9/figma/thu-vector.jpg" alt="Vector cut file: two eye shapes with red lash lines and a long finger shape with a nail"></figure>
+        <p>I picked ideas from the sketches, an eye with lashes and an extra fingertip with a nail, and drew them as cut files.</p>
+      </div>
+
+      <h4 class="section">✦ Laser cut file</h4>
+      <figure class="single wide"><img src="assets/source/W9/figma/thu-laser-cut-file.jpg" alt="Laser cut file: eye rings, umbrella rings and finger rings, each cut at four sizes labelled 90, Origin, 105 and 110"><figcaption>Eye, umbrella and finger rings, each cut at 90%, original, 105% and 110% to test the fit.</figcaption></figure>
+      <ul class="notes">
+        <li>At first I also cut out the umbrella shapes, but they broke because the gaps between the lines were too thin.</li>
+        <li><strong>The most important thing I learnt:</strong> the gap between laser cut lines should never be smaller than 2mm.</li>
+        <li><strong>Reflection:</strong> "burnt edges" means the burn marks on the flat surface, not on the edges around the perimeter.</li>
+      </ul>
+
+      <h4 class="section">✦ Final rings</h4>
+      <div class="gallery three">
+        <figure><img src="assets/source/W9/figma/thu-rings.jpg" alt="The two laser cut wooden rings: an eye with engraved lashes and a long finger with an engraved nail"></figure>
+        <figure><img src="assets/source/W9/figma/thu-ring-fist.jpg" alt="The finger ring worn on a hand making a fist, so it looks like an extra long finger"></figure>
+        <figure><img src="assets/source/W9/figma/thu-ring-hand.jpg" alt="The eye ring worn on an open hand"></figure>
+      </div>
+
+      <a class="back" href="index.html">← Back to journal</a>
+    </main>
+  </body>
+</html>

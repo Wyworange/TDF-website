@@ -218,3 +218,39 @@ strong { font-weight: 700; }
 .week-seven-page .system-diagram { margin: 32px 0 56px; }
 .week-seven-page .diagram-scroll { border: 1px solid #d8d8d8; background: #fbfbf9; padding: 24px; overflow-x: auto; }
 .week-seven-page .diagram-scroll svg { display: block; width: 100%; min-width: 820px; height: auto; }
+
+/* Week 9 — reuses the .week-seven-page figure-notes layout; extras below. */
+.week-nine-page code { font-family: ui-monospace, Menlo, monospace; font-size: .85em; background: #f2f2ef; padding: 1px 5px; overflow-wrap: anywhere; }
+.week-nine-page .nine-gif img { max-width: 560px; }
+.week-nine-page .nine-code { min-width: 0; margin: 0; padding: 22px 24px; overflow-x: auto; background: #1d1e20; color: #e8e8e3; font-size: 15px; line-height: 1.6; }
+.week-nine-page .nine-code code { background: none; padding: 0; font-size: inherit; }
+.week-nine-page .nine-tight { margin: 0; }
+.week-nine-page figure.nine-small { width: min(34%, 420px); margin-left: 0; }
+.week-nine-page .nine-portrait img { max-width: 420px; margin: 0 auto; }
+.week-nine-page .nine-medium-figure img { max-width: 560px; }
+.week-nine-page .nine-lab { margin-top: 72px; padding: clamp(24px, 3.5vw, 58px); border: 1px solid #d8d8d8; background: #f7f7f5; }
+.week-nine-page .nine-lab .section { margin-top: 0; }
+.week-nine-page .nine-flow { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin: 0 0 40px; padding: 22px 0; border-top: 1px solid #bbb; border-bottom: 1px solid #bbb; }
+.week-nine-page .nine-flow li { position: relative; padding: 0 14px; text-align: center; }
+.week-nine-page .nine-flow li + li::before { content: "→"; position: absolute; left: -.5em; top: 0; color: #888; }
+.week-nine-page .nine-flow span { display: block; margin: 0 auto 7px; width: 22px; height: 22px; border-radius: 50%; background: #242424; color: #fff; line-height: 22px; font-size: .7rem; }
+.week-nine-page .nine-flow strong, .week-nine-page .nine-flow small { display: block; }
+.week-nine-page .nine-flow small { margin-top: 4px; color: #666; font-size: 16px; }
+@media (max-width: 760px) {
+  .week-nine-page figure.nine-small { width: 100%; }
+  .week-nine-page .nine-flow { grid-template-columns: 1fr; gap: 34px; }
+  .week-nine-page .nine-flow li + li::before { content: "↓"; left: 50%; top: -1.2em; transform: translateX(-50%); }
+  .week-nine-page .nine-lab { padding: 18px; }
+}
+@media (max-width: 900px) {
+  .week-nine-page .figure-notes { grid-template-columns: 1fr; }
+}
+.week-nine-page .nine-portrait video { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto; background: #000; }
+
+/* Week 12 final: photo wider, video beside it */
+.week-nine-page .nine-final { max-width: 620px; grid-template-columns: 360px 240px; align-items: start; }
+.week-nine-page .nine-final img,
+.week-nine-page .nine-final video { width: 100%; height: auto; display: block; }
+@media (max-width: 900px) {
+  .week-nine-page .nine-final { grid-template-columns: minmax(0,360px); }
+}
